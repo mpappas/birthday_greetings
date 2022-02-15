@@ -1,0 +1,24 @@
+{
+  "name": "birthday_greetings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpappas/birthday_greetings.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpappas/birthday_greetings/issues"
+  },
+  "homepage": "https://github.com/mpappas/birthday_greetings#readme",
+  "dependencies": {
+    "csv-parse": "^4.16.0",
+    "nodemailer": "^6.7.2"
+  }
+}
