@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mpappas/birthday_greetings#readme",
   "dependencies": {
+    "@vonage/server-sdk": "^2.10.10",
     "axios": "^0.26.0",
     "cors": "^2.8.5",
     "csv-parse": "^4.16.0",
