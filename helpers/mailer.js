@@ -13,8 +13,8 @@ async function sendWishedEmail(friend) {
   const mailOptions = {
     from: 'emailbirthdaywishes@gmail.com',
     to: email,
-    subject: `Happy Birthdays ${first_name}`,
-    text: 'Happy birtday to you my good friend!',
+    subject: 'Happy Birthday!',
+    text: `Happy birtday, dear ${first_name}!`,
   };
 
   console.log('mailOptions', mailOptions);
