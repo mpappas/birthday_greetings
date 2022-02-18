@@ -3,9 +3,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 const responseTime = require('response-time');
 
-// const pricesRouter = require('./routes/pricesRouter');
-// require('./cacheManager');
-
 const api = require('./routes/api');
 
 const app = express();
