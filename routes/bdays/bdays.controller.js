@@ -17,7 +17,7 @@ async function httpSendWishesToday(req, res) {
   const friendsToWish = loadAllFriendsWithBirthdayFromDB();
   friendsToWish.forEach(async (friend) => {
     friendsEmailSent.push(friend.first_name);
-    // await sendWishedEmail(friend);
+    await sendWishedEmail(friend);
   });
   console.log('friendsEmailSent', friendsEmailSent);
   return res.status(200).json(friendsEmailSent);
