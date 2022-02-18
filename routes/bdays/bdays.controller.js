@@ -1,12 +1,23 @@
-const { friendsToWish } = require('../../models/bdays.model');
+const { loadAllFriendsWithBirthdayFromDB, friendsToWish } = require('../../models/bdays.model');
 
 const sendWishedEmail = require('../../helpers/mailer');
 
+// async function httpSendWishesToday(req, res) {
+//   let friendsEmailSent = [];
+//   friendsToWish.forEach(async (friend) => {
+//     friendsEmailSent.push(friend.first_name);
+//     await sendWishedEmail(friend);
+//   });
+//   console.log('friendsEmailSent', friendsEmailSent);
+//   return res.status(200).json(friendsEmailSent);
+// }
+
 async function httpSendWishesToday(req, res) {
   let friendsEmailSent = [];
+  const friendsToWish = loadAllFriendsWithBirthdayFromDB();
   friendsToWish.forEach(async (friend) => {
     friendsEmailSent.push(friend.first_name);
-    await sendWishedEmail(friend);
+    // await sendWishedEmail(friend);
   });
   console.log('friendsEmailSent', friendsEmailSent);
   return res.status(200).json(friendsEmailSent);
