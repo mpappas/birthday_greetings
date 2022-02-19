@@ -1,8 +1,11 @@
+const db = require('../services/sqlite');
 const parse = require('csv-parse');
 const fs = require('fs');
 const path = require('path');
+const config = require('../config/config');
 
 const friendsToWish = [];
+const friendsToWishFromDB = [];
 
 const todayIs = new Date();
 
@@ -12,6 +15,19 @@ function hasBirthday(friend) {
     friendsDateOfBirth.getDate() == todayIs.getDate() &&
     friendsDateOfBirth.getMonth() == todayIs.getMonth()
   );
+}
+
+function loadAllFriendsWithBirthdayFromDB(page = 1) {
+  const offset = (page - 1) * config.listPerPage;
+  const data = db.query(`SELECT * FROM friends LIMIT ?,?`, [offset, config.listPerPage]);
+
+  data.map((friend) => {
+    if (hasBirthday(friend)) {
+      friendsToWishFromDB.push(friend);
+    }
+  });
+
+  return friendsToWishFromDB;
 }
 
 function loadAllFriendsWithBirthday() {
@@ -35,11 +51,10 @@ function loadAllFriendsWithBirthday() {
       .on('end', () => {
         const countFriendsToWish = friendsToWish.length;
         console.log(`${countFriendsToWish} friends of yours have birthday today!`);
-        // To Delete
-        console.log(friendsToWish);
+        // console.log(friendsToWish);
         resolve();
       });
   });
 }
 
-module.exports = { loadAllFriendsWithBirthday, friendsToWish };
+module.exports = { loadAllFriendsWithBirthday, loadAllFriendsWithBirthdayFromDB, friendsToWish };
